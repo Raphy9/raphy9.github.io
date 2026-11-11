@@ -5,191 +5,245 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raphaël Arakelian</title>
 <meta name="description" content="Raphaël Arakelian, apprentice research engineer at CEA-List. Formal specification and verification of distributed systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff;
-    --text: #1f1f1f;
-    --muted: #5f5f5f;
-    --link: #1a4f8b;
-    --rule: #dddddd;
+    --bg: #fbfaf7;
+    --text: #22201c;
+    --muted: #807a70;
+    --accent: #2f5d8a;
+    --line: #e6e2da;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #161616;
-      --text: #e4e4e4;
-      --muted: #a0a0a0;
-      --link: #8ab4e8;
-      --rule: #333333;
+      --bg: #17171a;
+      --text: #e8e5df;
+      --muted: #8f8a82;
+      --accent: #8fb3d9;
+      --line: #2c2c30;
     }
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
-    font-size: 17px;
-    line-height: 1.55;
+    font-family: "Newsreader", Charter, Georgia, serif;
+    font-size: 19px;
+    line-height: 1.6;
+    font-optical-sizing: auto;
   }
   main {
-    max-width: 46rem;
+    max-width: 40rem;
     margin: 0 auto;
-    padding: 3rem 1rem 4rem;
+    padding: 2.5rem 1rem 4rem;
   }
-  a { color: var(--link); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header {
-    display: flex;
-    gap: 1.75rem;
-    align-items: center;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  .banner {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 1;
+    object-fit: cover;
+    border-radius: 6px;
     margin-bottom: 2rem;
   }
-  header img {
-    width: 150px;
-    height: 150px;
-    border-radius: 4px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  h1 {
+    font-size: 2.1rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+  }
+  .role { margin: 0; color: var(--muted); font-size: 1.02rem; line-height: 1.5; }
+  .role a { color: var(--muted); white-space: nowrap; }
+  .role a:hover { color: var(--accent); }
+  .photo {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
   }
-  h1 {
-    font-size: 1.9rem;
-    font-weight: normal;
-    margin: 0 0 0.3rem;
+
+  .links {
+    margin: 1.2rem 0 0;
+    font-size: 1rem;
   }
-  .role { margin: 0 0 0.8rem; color: var(--muted); }
-  .links { margin: 0; }
-  .links a + a::before {
-    content: "·";
-    color: var(--muted);
-    margin: 0 0.5rem;
-  }
+  .links a + a { margin-left: 1.1rem; }
+
+  section { margin-top: 2.6rem; }
   h2 {
-    font-size: 1.15rem;
-    font-weight: bold;
-    margin: 2.2rem 0 0.8rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid var(--rule);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
   }
-  p { margin: 0 0 0.9rem; }
-  ul { margin: 0; padding-left: 1.2rem; }
-  li { margin-bottom: 0.3rem; }
-  .entries { list-style: none; padding: 0; }
-  .entries li {
+  p { margin: 0 0 1rem; }
+  section > p:last-child { margin-bottom: 0; }
+
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .rows li {
     display: grid;
-    grid-template-columns: 8.5rem 1fr;
+    grid-template-columns: 7rem 1fr;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
   }
-  .when { color: var(--muted); }
-  .what p { margin: 0.2rem 0 0; }
-  .muted { color: var(--muted); }
+  .rows li:last-child { margin-bottom: 0; }
+  .date {
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.12rem;
+  }
+  .note { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 0.15rem; }
+
   footer {
-    margin-top: 3rem;
+    margin-top: 4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
     font-size: 0.85rem;
     color: var(--muted);
   }
+
   @media (max-width: 560px) {
-    header { flex-direction: column; align-items: flex-start; }
-    header img { width: 120px; height: 120px; }
-    .entries li { grid-template-columns: 1fr; gap: 0; }
+    body { font-size: 18px; }
+    main { padding-top: 1rem; }
+    .banner { margin-bottom: 1.5rem; }
+    h1 { font-size: 1.75rem; }
+    .photo { width: 72px; height: 72px; }
+    .rows li { grid-template-columns: 1fr; gap: 0; }
   }
 </style>
 </head>
 <body>
 <main>
 
+<img class="banner" src="banner.jpg" alt="Campus of Université Paris-Saclay in Orsay">
+
 <header>
-  <img src="photo.jpg" alt="Photo of Raphaël Arakelian">
   <div>
     <h1>Raphaël Arakelian</h1>
-    <p class="role">Apprentice research engineer at CEA-List<br>MSc student at Université Paris-Saclay</p>
-    <p class="links">
-      <a href="mailto:raphael.arakelian@universite-paris-saclay.fr">Email</a><a href="cv.pdf">CV</a><a href="https://github.com/Raphy9">GitHub</a><a href="https://www.linkedin.com/in/raphaelarakelian">LinkedIn</a>
+    <p class="role">
+      Apprentice research engineer, <a href="https://list.cea.fr">CEA-List</a><br>
+      MSc student, <a href="https://www.universite-paris-saclay.fr">Université Paris-Saclay</a>
     </p>
   </div>
+  <img class="photo" src="photo.jpg" alt="Photo of Raphaël Arakelian">
 </header>
 
-<h2>About</h2>
-<p>
-  I work on the formal specification and verification of distributed systems,
-  in particular systems that must keep working when some of their participants
-  behave arbitrarily (Byzantine faults).
-</p>
-<p>
-  At CEA-List, I am in charge of the formal verification side of Ledgera, an
-  open-source distributed ledger that certifies computations shared between
-  parties who do not trust each other. I write the formal specification of its
-  behaviour and derive from it the tests run against its Rust implementation.
-  I do my master's as an apprentice, alternating between the university and
-  CEA-List, under the supervision of Álvaro García Pérez.
+<p class="links">
+  <a href="mailto:raphael.arakelian@universite-paris-saclay.fr">Email</a>
+  <a href="cv.pdf">CV</a>
+  <a href="https://github.com/Raphy9">GitHub</a>
+  <a href="https://www.linkedin.com/in/raphaelarakelian">LinkedIn</a>
 </p>
 
-<h2>Research interests</h2>
-<ul>
-  <li>Formal specification and deductive verification</li>
-  <li>Byzantine fault-tolerant protocols and distributed ledgers</li>
-  <li>Specification-based testing</li>
-  <li>Verification of Rust programs</li>
-</ul>
+<section>
+  <p>
+    I work on the formal specification and verification of distributed
+    systems, in particular systems that must keep working when some of their
+    participants behave arbitrarily (Byzantine faults).
+  </p>
+  <p>
+    At CEA-List, I am in charge of the formal verification side of Ledgera, an
+    open-source distributed ledger that certifies computations shared between
+    parties who do not trust each other. I write the formal specification of
+    its behaviour and derive from it the tests run against its Rust
+    implementation. I do my master's as an apprentice, alternating between the
+    university and CEA-List, under the supervision of Álvaro García Pérez.
+  </p>
+</section>
 
-<h2>Experience</h2>
-<ul class="entries">
-  <li>
-    <span class="when">2026 – now</span>
-    <div class="what">
-      <strong>CEA-List</strong>, Palaiseau. Apprentice research engineer,
-      formal methods for trustworthy distributed computing.
-      <p class="muted">Supervisor: Álvaro García Pérez</p>
-    </div>
-  </li>
-  <li>
-    <span class="when">May – Jul 2026</span>
-    <div class="what">
-      <strong>LIP6</strong>, Sorbonne Université. Research intern. Extended
-      VeriSol, a deductive verifier for smart contracts built on Boogie, to
-      contracts written in Solidity, Cairo and Rust, with compositional
-      assume-guarantee reasoning. In collaboration with Dowsers.
-      <p class="muted">Supervisors: Souheib Baarir and Nicolas Nalpon</p>
-    </div>
-  </li>
-  <li>
-    <span class="when">Jan – Apr 2026</span>
-    <div class="what">
-      <strong>LMF</strong>, ENS Paris-Saclay. Research intern. Tracing
-      ransomware payments through the Bitcoin transaction graph, combining
-      address clustering heuristics with machine learning.
-      <p class="muted">Supervisor: Sylvain Conchon</p>
-    </div>
-  </li>
-</ul>
+<section>
+  <h2>Interests</h2>
+  <p>
+    Formal specification, deductive verification, Byzantine fault-tolerant
+    protocols, specification-based testing, verification of Rust programs.
+  </p>
+</section>
 
-<h2>Projects</h2>
-<ul>
-  <li>
-    <a href="https://github.com/Raphy9/microgo-mips">Micro Go to MIPS compiler</a>,
-    in OCaml, with Juralaine Li (2025).
-  </li>
-</ul>
+<section>
+  <h2>Experience</h2>
+  <ul class="rows">
+    <li>
+      <span class="date">2026 – now</span>
+      <div>
+        CEA-List, Palaiseau. Apprentice research engineer in formal methods
+        for trustworthy distributed computing.
+        <span class="note">With Álvaro García Pérez</span>
+      </div>
+    </li>
+    <li>
+      <span class="date">May – Jul 2026</span>
+      <div>
+        LIP6, Sorbonne Université. Extended VeriSol, a deductive verifier for
+        smart contracts built on Boogie, to contracts written in Solidity,
+        Cairo and Rust, with compositional assume-guarantee reasoning.
+        <span class="note">With Souheib Baarir and Nicolas Nalpon, in collaboration with Dowsers</span>
+      </div>
+    </li>
+    <li>
+      <span class="date">Jan – Apr 2026</span>
+      <div>
+        LMF, ENS Paris-Saclay. Traced ransomware payments through the Bitcoin
+        transaction graph, combining address clustering with machine learning.
+        <span class="note">With Sylvain Conchon</span>
+      </div>
+    </li>
+  </ul>
+</section>
 
-<h2>Education</h2>
-<ul class="entries">
-  <li>
-    <span class="when">2026 – 2028</span>
-    <div class="what">
-      MSc in Computer Science for Data Science (apprenticeship),
-      Université Paris-Saclay
-    </div>
-  </li>
-  <li>
-    <span class="when">2023 – 2026</span>
-    <div class="what">
-      Double Bachelor's degree in Mathematics and Computer Science,
-      Magistère d'Informatique, Université Paris-Saclay
-    </div>
-  </li>
-</ul>
+<section>
+  <h2>Projects</h2>
+  <ul class="rows">
+    <li>
+      <span class="date">2025</span>
+      <div>
+        <a href="https://github.com/Raphy9/microgo-mips">Micro Go to MIPS compiler</a>,
+        written in OCaml.
+        <span class="note">With Juralaine Li</span>
+      </div>
+    </li>
+  </ul>
+</section>
 
-<footer>Last updated: November 2026</footer>
+<section>
+  <h2>Education</h2>
+  <ul class="rows">
+    <li>
+      <span class="date">2026 – 2028</span>
+      <div>MSc in Computer Science for Data Science, as an apprentice. Université Paris-Saclay.</div>
+    </li>
+    <li>
+      <span class="date">2023 – 2026</span>
+      <div>Double Bachelor's in Mathematics and Computer Science, Magistère d'Informatique. Université Paris-Saclay.</div>
+    </li>
+  </ul>
+</section>
+
+<footer>Last updated November 2026</footer>
 
 </main>
 </body>
